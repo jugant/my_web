@@ -1,0 +1,101 @@
+:root {
+    /* Base Colors Let's use vibrant startup colors */
+    --primary: #8a2be2;
+    --primary-hover: #7b24c9;
+    --secondary: #121212;
+    --accent: #00ffcc;
+    
+    --success: #20c997;
+    --danger: #ff4d4f;
+    --warning: #ffc107;
+    --info: #3b82f6;
+
+    /* Dark Theme Default */
+    --bg-main: #0a0a0c;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.05);
+    
+    --text-main: #f8f9fa;
+    --text-muted: #a0a0a0;
+    
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(138, 43, 226, 0.5);
+    
+    --glass-blur: blur(16px);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --gradient-primary: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+    --gradient-text: linear-gradient(90deg, #ff00cc, #3333ff);
+}
+
+body.light-mode {
+    --bg-main: #f4f6f8;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --bg-card-hover: rgba(255, 255, 255, 1);
+    
+    --text-main: #121212;
+    --text-muted: #666666;
+    
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-highlight: rgba(138, 43, 226, 0.3);
+    
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 16px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+input, textarea, select {
+    font-family: var(--font-body);
+}
+
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

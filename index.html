@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Caption Generator | SaaS Tool for Creators</title>
+    <meta name="description" content="AI-powered tool to generate social media captions, hashtags, and schedule posts.">
+    <!-- Phosphor Icons for modern sleek icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- LANDING PAGE -->
+    <section id="view-landing" class="view active">
+        <header class="glass-header">
+            <div class="logo">
+                <i class="ph-fill ph-sparkle"></i>
+                <span>CaptionAI</span>
+            </div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#reviews">Reviews</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-ghost" onclick="app.navigateTo('auth', {mode: 'login'})">Log in</button>
+                <button class="btn-primary" onclick="app.navigateTo('auth', {mode: 'signup'})">Sign up free</button>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <!-- Hero Section -->
+            <section class="hero text-center">
+                <div class="hero-badge">✨ V2.0 is now live</div>
+                <h1 class="hero-title">Generate Viral <span class="text-gradient">Captions</span> in Seconds</h1>
+                <p class="hero-subtitle">The ultimate AI-powered social media assistant for creators, influencers, and brands. Stop staring at a blank screen.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large" onclick="app.navigateTo('auth', {mode: 'signup'})">Get Started for Free <i class="ph ph-arrow-right"></i></button>
+                    <button class="btn-secondary btn-large" onclick="app.scrollTo('#demo')">See it in action</button>
+                </div>
+                <div class="hero-visual glass-card floating">
+                    <div class="demo-mockup">
+                        <div class="mockup-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mock-caption text-story">
+                                "Tired of the 9-to-5 grind? ☕ Let me tell you how I changed my life in 6 months using just a laptop and a dream... 👇 #Entrepreneur #Growth #Hustle"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="container">
+                <h2 class="section-title text-center">Everything you need to grow</h2>
+                <div class="grid features-grid">
+                    <div class="feature-card glass-card hover-lift">
+                        <i class="ph-fill ph-magic-wand feature-icon glow-purple"></i>
+                        <h3>AI Caption Generation</h3>
+                        <p>Generate captions perfectly tailored to your tone and target audience.</p>
+                    </div>
+                    <div class="feature-card glass-card hover-lift">
+                        <i class="ph-fill ph-image feature-icon glow-blue"></i>
+                        <h3>Image-to-Caption</h3>
+                        <p>Upload an image and let our AI determine the best mood and context.</p>
+                    </div>
+                    <div class="feature-card glass-card hover-lift">
+                        <i class="ph-fill ph-hash feature-icon glow-pink"></i>
+                        <h3>Hashtag Analytics</h3>
+                        <p>Discover high-reach, low-competition tags that actually work.</p>
+                    </div>
+                    <div class="feature-card glass-card hover-lift">
+                        <i class="ph-fill ph-calendar-check feature-icon glow-green"></i>
+                        <h3>Content Scheduler</h3>
+                        <p>Plan your content weeks ahead and get notified when it's time to post.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Demo Section -->
+            <section id="demo" class="container demo-section">
+                <div class="demo-content glass-card glowing-border">
+                    <h2 class="section-title">See how easy it is.</h2>
+                    <div class="demo-steps">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <p>Tell the AI what your post is about.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <p>Select your tone and platform.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <p>Get 5 highly engaging options instantly.</p>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="app.navigateTo('auth')">Try it Now</button>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="container">
+                <h2 class="section-title text-center">Simple, transparent pricing</h2>
+                <div class="pricing-cards">
+                    <div class="pricing-card glass-card">
+                        <h3>Free</h3>
+                        <div class="price">$0<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="ph ph-check-circle"></i> 20 Captions/month</li>
+                            <li><i class="ph ph-check-circle"></i> Basic Tone Selection</li>
+                            <li><i class="ph ph-check-circle"></i> Standard Support</li>
+                        </ul>
+                        <button class="btn-secondary btn-full" onclick="app.navigateTo('auth')">Start Free</button>
+                    </div>
+                    <div class="pricing-card glass-card popular">
+                        <div class="card-badge">Most Popular</div>
+                        <h3>Pro</h3>
+                        <div class="price">$15<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="ph ph-check-circle"></i> Unlimited Captions</li>
+                            <li><i class="ph ph-check-circle"></i> Advanced Hashtags</li>
+                            <li><i class="ph ph-check-circle"></i> Auto Scheduling</li>
+                            <li><i class="ph ph-check-circle"></i> Priority Support</li>
+                        </ul>
+                        <button class="btn-primary btn-full" onclick="app.navigateTo('auth')">Upgrade to Pro</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews -->
+            <section id="reviews" class="container">
+                <h2 class="section-title text-center">Loved by creators</h2>
+                <div class="reviews-grid" id="landing-reviews-container">
+                    <!-- Loaded via JS -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="brand">
+                    <i class="ph-fill ph-sparkle"></i>
+                    <span>CaptionAI</span>
+                </div>
+                <p>&copy; 2026 AI Caption Generator. All rights reserved.</p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- AUTH PAGE -->
+    <section id="view-auth" class="view auth-view flex-center">
+        <!-- Animated Background Elements -->
+        <div class="auth-bg-glow glow-1"></div>
+        <div class="auth-bg-glow glow-2"></div>
+        <div class="auth-bg-glow glow-3"></div>
+
+        <div class="auth-box glass-card auth-glass glowing-border scale-in hover-tilt">
+            <div class="auth-header">
+                <button class="btn-icon back-btn" onclick="app.navigateTo('landing')"><i class="ph ph-arrow-left"></i></button>
+                <div class="logo">
+                    <i class="ph-fill ph-sparkle"></i>
+                    <span>CaptionAI</span>
+                </div>
+            </div>
+            <div class="auth-headings">
+                <h2 id="auth-title">Welcome back</h2>
+                <p class="text-muted text-sm" id="auth-subtitle">Login to your account to continue</p>
+            </div>
+            <form id="auth-form" class="floating-form">
+                <div class="input-group floating-group scale-in" id="auth-name-group" style="display: none; --animation-delay: 0.1s;">
+                    <i class="ph ph-user input-icon"></i>
+                    <input type="text" id="auth-name" class="glass-input floating-input" placeholder=" ">
+                    <label class="floating-label">Full Name</label>
+                </div>
+                <div class="input-group floating-group scale-in" style="--animation-delay: 0.2s;">
+                    <i class="ph ph-envelope input-icon"></i>
+                    <input type="email" id="auth-email" class="glass-input floating-input" placeholder=" " required autocomplete="off">
+                    <label class="floating-label">Email Address</label>
+                    <div id="email-suggestions" class="autocomplete-dropdown hidden"></div>
+                </div>
+                <div class="input-group floating-group scale-in" style="--animation-delay: 0.3s;">
+                    <i class="ph ph-lock input-icon"></i>
+                    <input type="password" id="auth-password" class="glass-input floating-input" placeholder=" " required>
+                    <label class="floating-label">Password</label>
+                    <button type="button" class="btn-icon password-toggle" onclick="app.togglePasswordVisibility()">
+                        <i class="ph ph-eye" id="pwd-toggle-icon"></i>
+                    </button>
+                </div>
+                <div id="auth-error" class="text-danger text-sm mb-3 auth-error-msg" style="display: none;"></div>
+                <button type="submit" class="btn-primary btn-full animate-glow scale-in auth-btn" id="auth-submit-btn" style="--animation-delay: 0.4s; font-size: 1.1rem; padding: 0.8rem;">Log in</button>
+            </form>
+            <div class="auth-switch scale-in" style="--animation-delay: 0.5s;">
+                <span id="auth-switch-text">Don't have an account?</span>
+                <a href="#" id="auth-switch-link" onclick="app.toggleAuthMode(event)">Sign up</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD APPLICATION -->
+    <section id="view-app" class="view app-view">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="ph-fill ph-sparkle"></i>
+                    <span>CaptionAI</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" data-page="dashboard" class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</a>
+                <a href="#" data-page="generate" class="nav-item"><i class="ph ph-magic-wand"></i> Caption Generator</a>
+                <a href="#" data-page="image" class="nav-item"><i class="ph ph-image"></i> Image to Caption</a>
+                <a href="#" data-page="rewrite" class="nav-item"><i class="ph ph-arrows-clockwise"></i> Rewrite Tool</a>
+                <a href="#" data-page="hashtags" class="nav-item"><i class="ph ph-hash"></i> Hashtags</a>
+                <a href="#" data-page="schedule" class="nav-item"><i class="ph ph-calendar-check"></i> Scheduler</a>
+                <a href="#" data-page="history" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i> History</a>
+                <a href="#" data-page="reviews" class="nav-item"><i class="ph ph-star"></i> Reviews</a>
+                <div class="nav-divider"></div>
+                <a href="#" data-page="settings" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+                <a href="#" data-page="about" class="nav-item"><i class="ph ph-info"></i> About</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="nav-item text-danger" onclick="auth.logout()"><i class="ph ph-sign-out"></i> Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Topbar -->
+            <header class="topbar glass-panel">
+                <div class="topbar-left">
+                    <button class="menu-toggle btn-icon hide-desktop"><i class="ph ph-list"></i></button>
+                    <h2 class="page-title" id="current-page-title">Dashboard</h2>
+                </div>
+                <div class="topbar-right">
+                    <div class="credit-badge">
+                        <i class="ph-fill ph-coin gold"></i>
+                        <span id="user-credits">20</span> credits
+                    </div>
+                    <div class="plan-badge" id="user-plan">Free Plan</div>
+                    <div class="user-profile">
+                        <div class="avatar" id="user-avatar-initial">U</div>
+                        <span id="user-name-display" class="hide-mobile">User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Content Area -->
+            <div class="content-area">
+                
+                <!-- Page: Dashboard Overview -->
+                <div id="page-dashboard" class="app-page active fade-in">
+                    <div class="welcome-banner glass-card gradient-bg gradient-purple">
+                        <div>
+                            <h2 id="dashboard-welcome">Welcome back!</h2>
+                            <p>Ready to create some viral content today?</p>
+                        </div>
+                        <button class="btn-secondary" onclick="app.setPage('generate')">Create Caption <i class="ph ph-arrow-right"></i></button>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <i class="ph ph-file-text stat-icon text-blue"></i>
+                            <div class="stat-info">
+                                <h3>Total Captions</h3>
+                                <p class="stat-value" id="stat-total-captions">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <i class="ph ph-calendar-check stat-icon text-green"></i>
+                            <div class="stat-info">
+                                <h3>Scheduled</h3>
+                                <p class="stat-value" id="stat-scheduled">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <i class="ph ph-coin stat-icon text-gold"></i>
+                            <div class="stat-info">
+                                <h3>Credits Left</h3>
+                                <p class="stat-value" id="stat-credits-left">20</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-upgrade glass-card glow-border" id="dashboard-upgrade-banner">
+                        <div class="upgrade-content">
+                            <h3>Upgrade to Pro</h3>
+                            <p>Get unlimited captions, advanced hashtags, and scheduling features.</p>
+                        </div>
+                        <button class="btn-primary" onclick="app.setPage('settings')">Upgrade Now</button>
+                    </div>
+                </div>
+
+                <!-- Page: Caption Generator -->
+                <div id="page-generate" class="app-page fade-in">
+                    <div class="generator-layout">
+                        <div class="input-panel glass-card">
+                            <h3>Create New Caption</h3>
+                            <div class="input-group">
+                                <label>What is your post about?</label>
+                                <textarea id="gen-topic" class="glass-input" rows="4" placeholder="e.g. A new morning coffee routine that boosts productivity..." style="resize: vertical;"></textarea>
+                            </div>
+                            
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label>Tone</label>
+                                    <select id="gen-tone" class="glass-select">
+                                        <option value="Motivational">Motivational</option>
+                                        <option value="Funny">Funny</option>
+                                        <option value="Aesthetic">Aesthetic</option>
+                                        <option value="Professional">Professional</option>
+                                        <option value="Storytelling">Storytelling</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Platform</label>
+                                    <select id="gen-platform" class="glass-select">
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="YouTube">YouTube</option>
+                                        <option value="LinkedIn">LinkedIn</option>
+                                        <option value="Twitter">Twitter</option>
+                                        <option value="TikTok">TikTok</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-primary btn-full generate-btn" onclick="generator.generateCaptions()">
+                                <i class="ph ph-magic-wand"></i> Generate Captions (1 Credit)
+                            </button>
+                        </div>
+
+                        <div class="results-panel">
+                            <h3>Generated Results</h3>
+                            <div id="gen-results" class="results-container">
+                                <div class="empty-state">
+                                    <i class="ph-fill ph-sparkle text-muted"></i>
+                                    <p>Your AI-generated captions will appear here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: Image to Caption -->
+                <div id="page-image" class="app-page fade-in">
+                    <div class="generator-layout">
+                        <div class="input-panel glass-card">
+                            <h3>Upload Image</h3>
+                            <div class="upload-zone" id="image-upload-zone">
+                                <i class="ph ph-upload-simple"></i>
+                                <p>Drag & drop or click to upload</p>
+                                <input type="file" id="image-input" accept="image/*" hidden>
+                            </div>
+                            <div id="image-preview-container" class="hidden">
+                                <img id="image-preview" src="" alt="Preview">
+                                <button class="btn-ghost btn-small" onclick="generator.clearImage()">Remove Image</button>
+                            </div>
+                            <div class="input-group mt-3">
+                                <label>Platform</label>
+                                <select id="img-platform" class="glass-select">
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="TikTok">TikTok</option>
+                                    <option value="Twitter">Twitter</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary btn-full generate-btn" id="btn-img-generate" onclick="generator.generateImageCaptions()" disabled>
+                                <i class="ph ph-magic-wand"></i> Generate Caption (1 Credit)
+                            </button>
+                        </div>
+                        <div class="results-panel">
+                             <h3>Generated Results</h3>
+                             <div id="img-results" class="results-container">
+                                 <div class="empty-state"><p>Upload an image to get started.</p></div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: Rewrite Tool -->
+                <div id="page-rewrite" class="app-page fade-in">
+                    <div class="generator-layout">
+                        <div class="input-panel glass-card">
+                            <h3>Rewrite existing caption</h3>
+                            <p class="text-muted text-sm mb-3">Make your existing caption more engaging and viral.</p>
+                            <div class="input-group">
+                                <label>Original Caption</label>
+                                <textarea id="rew-original" class="glass-input" rows="5" placeholder="Paste your boring caption here..." style="resize: vertical;"></textarea>
+                            </div>
+                            <button class="btn-primary btn-full generate-btn" onclick="generator.rewriteCaption()">
+                                <i class="ph ph-arrows-clockwise"></i> Rewrite (1 Credit)
+                            </button>
+                        </div>
+                        <div class="results-panel">
+                             <h3>Improved Captions</h3>
+                             <div id="rew-results" class="results-container">
+                                 <div class="empty-state"><p>Your rewritten captions will appear here.</p></div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: Hashtags -->
+                <div id="page-hashtags" class="app-page fade-in">
+                    <div class="glass-card mb-4 p-4">
+                        <h3>Hashtag Generator</h3>
+                        <div class="input-row">
+                            <input type="text" id="hash-topic" class="glass-input flex-1" placeholder="Enter a topic or niche (e.g. fitness, web dev)">
+                            <button class="btn-primary" onclick="generator.generateHashtags()">Generate</button>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <div class="flex-between mb-3">
+                            <h3>Top Hashtags</h3>
+                            <button class="btn-secondary btn-small" id="btn-copy-hashtags" onclick="generator.copyAllHashtags()" disabled><i class="ph ph-copy"></i> Copy All</button>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table" id="hashtags-table">
+                                <thead>
+                                    <tr>
+                                        <th>Hashtag</th>
+                                        <th>Popularity</th>
+                                        <th>Reach</th>
+                                        <th>Trending Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hashtags-body">
+                                    <tr><td colspan="4" class="text-center text-muted">Generate hashtags to see analytics</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: Scheduler -->
+                <div id="page-schedule" class="app-page fade-in">
+                    <div class="grid schedule-grid">
+                        <div class="glass-card mb-4">
+                            <h3>Schedule a Post</h3>
+                            <div class="input-group">
+                                <label>Caption Text</label>
+                                <textarea id="sch-text" class="glass-input" rows="3" placeholder="Paste your caption here..." style="resize: vertical;"></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label>Date</label>
+                                    <input type="date" id="sch-date" class="glass-input">
+                                </div>
+                                <div class="input-group">
+                                    <label>Time</label>
+                                    <input type="time" id="sch-time" class="glass-input">
+                                </div>
+                            </div>
+                            <button class="btn-primary" onclick="scheduler.schedulePost()">Schedule Post</button>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3>Content Calendar</h3>
+                            <div id="schedule-list" class="schedule-list">
+                                <!-- Scheduled items go here -->
+                                <div class="empty-state"><p>No scheduled posts yet.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: History -->
+                <div id="page-history" class="app-page fade-in">
+                    <div class="glass-card flex-between mb-4 p-4">
+                        <div>
+                            <h3>Caption History</h3>
+                            <p class="text-muted text-sm">All your previously generated captions</p>
+                        </div>
+                        <button class="btn-secondary btn-small text-danger" onclick="history.clear()">Clear History</button>
+                    </div>
+                    <div class="history-grid" id="history-container">
+                        <div class="empty-state"><p>No history found.</p></div>
+                    </div>
+                </div>
+
+                <!-- Page: Reviews -->
+                <div id="page-reviews" class="app-page fade-in">
+                    <div class="glass-card mb-4 p-4">
+                        <h3>Submit a Review</h3>
+                        <p class="text-muted text-sm mb-3">Tell us what you think of CaptionAI.</p>
+                        <div class="rating-selector mb-3" id="review-stars-input">
+                            <i class="ph-fill ph-star active" data-val="1"></i>
+                            <i class="ph-fill ph-star active" data-val="2"></i>
+                            <i class="ph-fill ph-star active" data-val="3"></i>
+                            <i class="ph-fill ph-star active" data-val="4"></i>
+                            <i class="ph-fill ph-star active" data-val="5"></i>
+                        </div>
+                        <textarea id="review-text" class="glass-input mb-3" rows="3" placeholder="This app is amazing..."></textarea>
+                        <button class="btn-primary" onclick="reviews.submitReview()">Submit Review</button>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Recent Reviews</h3>
+                        <div id="reviews-list-dashboard" class="reviews-list mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Page: Settings -->
+                <div id="page-settings" class="app-page fade-in">
+                    <div class="grid settings-grid">
+                        <div class="glass-card">
+                            <h3>Profile Settings</h3>
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" id="set-name" class="glass-input">
+                            </div>
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" id="set-email" class="glass-input" disabled>
+                            </div>
+                            <div class="input-group">
+                                <label>New Password</label>
+                                <input type="password" id="set-password" class="glass-input" placeholder="Leave blank to keep current">
+                            </div>
+                            <button class="btn-primary mt-2" onclick="settings.updateProfile()">Save Profile</button>
+                        </div>
+
+                        <div class="glass-card">
+                            <h3>Subscription & Billing</h3>
+                            <div class="subscription-status mb-3">
+                                <div class="badge plan-badge large" id="set-plan-badge">Free Plan</div>
+                                <p class="mt-2 text-muted" id="set-plan-desc">You receive 20 free captions per month.</p>
+                            </div>
+                            <div id="upgrade-section">
+                                <button class="btn-primary btn-large w-full mb-2" onclick="settings.upgradeToPro()">Upgrade to Pro - $15/mo</button>
+                                <p class="text-xs text-center text-muted"><i class="ph ph-lock"></i> Secure payment powered by Stripe Mock</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <h3>Preferences</h3>
+                            <div class="preference-row flex-between mb-3">
+                                <div>
+                                    <h4>Theme</h4>
+                                    <p class="text-xs text-muted">Switch between dark and light mode</p>
+                                </div>
+                                <button class="btn-secondary btn-icon" id="theme-toggle" onclick="app.toggleTheme()"><i class="ph ph-sun"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page: About -->
+                <div id="page-about" class="app-page fade-in">
+                    <div class="glass-card p-5 center-text max-w-lg mx-auto mt-4">
+                        <div class="logo large mb-4 justify-center">
+                            <i class="ph-fill ph-sparkle"></i>
+                            <span>CaptionAI</span>
+                        </div>
+                        <h3>About the Tool</h3>
+                        <p class="text-muted mt-3 mb-4 text-left">
+                            Caption AI Generator is the ultimate copilot for social media creators. Leveraging advanced AI models, it helps you break through writer's block by instantly generating highly engaging, platform-specific captions. <br><br>
+                            Our mission is to save creators hours of tedious work while maximizing their reach and engagement across all major platforms, from Instagram to TikTok.
+                        </p>
+                        <p class="text-sm font-bold text-gradient">Version 2.0.0 &copy; 2026</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </section>
+
+    <script src="js/data.js"></script>
+    <script src="js/api-mock.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
